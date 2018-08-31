@@ -4,7 +4,7 @@ Enter the verification code received by the phone or other device.
 
 ## Demo  
 控制用户精准输入长度. 
-<!--![](https://github.com/disburden/vercoder_inputer/blob/master/ScreenShots/verCode.gif?raw=true) --> 
+![](https://github.com/disburden/vercoder_inputer/blob/master/ScreenShots/verCode.gif?raw=true)  
 
 ## Features
 - [x] **可以自定义验证码长度**  
