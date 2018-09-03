@@ -1,6 +1,6 @@
 name: vercoder_inputer
 description: Enter the verification code received by the phone or other device.
-version: 0.3.1
+version: 0.3.3
 author: disburden <disburden@gmail.com>
 homepage: https://github.com/disburden/vercoder_inputer
 

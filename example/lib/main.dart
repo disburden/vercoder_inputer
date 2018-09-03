@@ -48,7 +48,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State < MyHomePage > {
-	WGQVerCodeInputer verCodeInputer = WGQVerCodeInputer(codeLength: 6, parnetSize: Size(375.0, 48.0), finishInput: (verCode, ctx) {
+	WGQVerCodeInputer verCodeInputer = WGQVerCodeInputer(codeLength: 6, size: Size(375.0, 48.0), finishInput: (inputer,verCode, ctx) {
+		
 		print("veris $verCode");
 	}, );
 

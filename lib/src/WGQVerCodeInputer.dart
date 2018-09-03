@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-typedef FinishInput = void Function(String verCoder,BuildContext ctx);
+typedef FinishInput = void Function(WGQVerCodeInputer inputer,String verCoder,BuildContext ctx);
 
 class WGQVerCodeInputer extends StatefulWidget {
 	int codeLength = 6;
-	final Size parnetSize;
+	final Size size;
 	double gap = 8.0;
 	final FinishInput finishInput;
 
@@ -20,7 +20,7 @@ class WGQVerCodeInputer extends StatefulWidget {
 
 	WGQVerCodeInputer({
 		this.codeLength,
-		this.parnetSize,
+		this.size,
 		this.finishInput
 	});
 
@@ -120,7 +120,7 @@ class _InputerState extends State < WGQVerCodeInputer > {
 
 			///如果验证码全部输入完,调用回调
 			if (checkCode()) {
-				widget.finishInput(getVerCode(),context);
+				widget.finishInput(widget,getVerCode(),context);
 			}
 		}
 
@@ -168,7 +168,7 @@ class _InputerState extends State < WGQVerCodeInputer > {
 			});
 
 			return Container(
-				width: (widget.parnetSize.width / widget.codeLength),
+				width: (widget.size.width / widget.codeLength),
 
 				child: Padding(
 					padding: EdgeInsets.all(widget.gap),
@@ -204,8 +204,8 @@ class _InputerState extends State < WGQVerCodeInputer > {
 		});
 
 		return SizedBox(
-			height: widget.parnetSize.height,
-			width: widget.parnetSize.width,
+			height: widget.size.height,
+			width: widget.size.width,
 			child: ListView(
 				children: tfs,
 				scrollDirection: Axis.horizontal,
