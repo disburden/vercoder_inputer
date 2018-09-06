@@ -47,14 +47,16 @@ class MyHomePage extends StatefulWidget {
 	_MyHomePageState createState() => new _MyHomePageState();
 }
 
-class _MyHomePageState extends State < MyHomePage > {
-	WGQVerCodeInputer verCodeInputer = WGQVerCodeInputer(codeLength: 6, size: Size(375.0, 48.0), finishInput: (inputer,verCode, ctx) {
-		
-		print("veris $verCode");
-	}, );
+class _MyHomePageState extends State < MyHomePage > implements InputerProtocol{
+	
+
+	void didFinishedInputer(WGQVerCodeInputer inputer,BuildContext ctx,String verCode){
+		print("verCode is $verCode");
+	}
 
 	@override
 	Widget build(BuildContext context) {
+		WGQVerCodeInputer verCodeInputer = WGQVerCodeInputer(codeLength: 6, size: Size(375.0, 48.0), delegate:this, );
 		return new Scaffold(
 			appBar: new AppBar(
 				title: new Text(widget.title),

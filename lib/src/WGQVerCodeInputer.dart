@@ -2,15 +2,21 @@ import 'package:flutter/material.dart';
 
 typedef FinishInput = void Function(WGQVerCodeInputer inputer,String verCoder,BuildContext ctx);
 
-class WGQVerCodeInputer extends StatefulWidget {
+abstract class InputerProtocol {
+	void didFinishedInputer(WGQVerCodeInputer inputer,BuildContext ctx,String verCode);
+}
+
+class WGQVerCodeInputer extends StatefulWidget{
 	int codeLength = 6;
 	final Size size;
 	double gap = 8.0;
-	final FinishInput finishInput;
+	// final FinishInput finishInput;
 
 	String get verCode {
 		return myState.getVerCode();
 	}
+
+	InputerProtocol delegate;
 
 	_InputerState myState;
 
@@ -18,11 +24,15 @@ class WGQVerCodeInputer extends StatefulWidget {
 		return myState.getVerCode();
 	}
 
+
 	WGQVerCodeInputer({
 		this.codeLength,
 		this.size,
-		this.finishInput
+		// this.finishInput,
+		this.delegate
 	});
+
+	
 
 	@override
 	_InputerState createState() {
@@ -120,7 +130,11 @@ class _InputerState extends State < WGQVerCodeInputer > {
 
 			///如果验证码全部输入完,调用回调
 			if (checkCode()) {
-				widget.finishInput(widget,getVerCode(),context);
+				if (widget.delegate != null)
+				{
+					widget.delegate.didFinishedInputer(widget, context, getVerCode());
+				}
+				// widget.finishInput(widget,getVerCode(),context);
 			}
 		}
 
