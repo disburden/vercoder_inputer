@@ -32,16 +32,21 @@ import 'package:vercoder_inputer/vercoder_inputer.dart';
 ...
 
 ```
-3.在需要使用的页面创建控件   
+3.在需要使用的页面创建控件,并声明遵守协议方法  
 ```  
-class _MyHomePageState extends State < MyHomePage > {
+class _MyHomePageState extends State < MyHomePage > implements InputerProtocol{
 
-	WGQVerCodeInputer verCodeInputer = WGQVerCodeInputer(codeLength: 6, size: Size(375.0, 48.0), finishInput: (inputer,verCode, ctx) {
-		print("veris $verCode");
-	}, );
+	//实现协议方法
+	void didFinishedInputer(WGQVerCodeInputer inputer,BuildContext ctx,String verCode){
+		print("verCode is $verCode");
+	}
+
+
 	
 	@override
 	Widget build(BuildContext context) {
+		//创建控件,并指明代理对象(delegate)
+		WGQVerCodeInputer verCodeInputer = WGQVerCodeInputer(codeLength: 6, size: Size(375.0, 48.0), delegate:this, );
 		return new Scaffold(
 			appBar: new AppBar(
 				title: new Text(widget.title),
