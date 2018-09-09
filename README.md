@@ -8,7 +8,7 @@ Enter the verification code received by the phone or other device.
 
 ## Features
 - [x] **可以自定义验证码长度**  
-- [x] **当全部输入完成后,会自动调用回调,返回验证码及上下文context**  
+- [x] **当全部输入完成后,会自动调用协议方法,通过代理返回验证码及上下文context**  
 - [x] **可以通过verCode属性获取输入的验证码**
 - [x] **用户自定义控件的尺寸**  
 
@@ -16,14 +16,14 @@ Enter the verification code received by the phone or other device.
 ## Version
 name|VercodeEditText
 ---|---
-latest|0.3.7
+latest|0.3.9
 
 ## Usage
 1.第一步,在你的pubspec.yml声明
 
 ```
    dependencies:
-     vercoder_inputer: ^0.3.7
+     vercoder_inputer: ^0.3.9
 ```
 2.添加引用
 
