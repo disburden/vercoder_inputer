@@ -16,14 +16,14 @@ Enter the verification code received by the phone or other device.
 ## Version
 name|VercodeEditText
 ---|---
-latest|0.3.9
+latest|0.4.0
 
 ## Usage
 1.第一步,在你的pubspec.yml声明
 
 ```
    dependencies:
-     vercoder_inputer: ^0.3.9
+     vercoder_inputer: ^0.4.0
 ```
 2.添加引用
 

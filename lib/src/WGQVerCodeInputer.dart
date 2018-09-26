@@ -221,6 +221,7 @@ class _InputerState extends State < WGQVerCodeInputer > {
 			height: widget.size.height,
 			width: widget.size.width,
 			child: ListView(
+				padding:EdgeInsets.zero,
 				children: tfs,
 				scrollDirection: Axis.horizontal,
 			),
