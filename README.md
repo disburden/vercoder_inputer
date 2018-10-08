@@ -1,10 +1,10 @@
-# vercoder_inputer
+# vercoder\_inputer
 Enter the verification code received by the phone or other device.  
 一个基于flutter的验证码输入框控件.
 
 ## Demo  
-控制用户精准输入长度. 
-![](https://github.com/disburden/vercoder_inputer/blob/master/ScreenShots/verCode.gif?raw=true)  
+控制用户精准输入长度.
+![][image-1]  
 
 ## Features
 - [x] **可以自定义验证码长度**  
@@ -16,32 +16,28 @@ Enter the verification code received by the phone or other device.
 ## Version
 name|VercodeEditText
 ---|---
-latest|0.4.0
+latest|0.5.0
 
 ## Usage
 1.第一步,在你的pubspec.yml声明
 
-```
-   dependencies:
-     vercoder_inputer: ^0.4.0
-```
+	   dependencies:
+	     vercoder_inputer: ^0.5.0
 2.添加引用
 
-```
-import 'package:vercoder_inputer/vercoder_inputer.dart';
-...
-
-```
+	import 'package:vercoder_inputer/vercoder_inputer.dart';
+	...
+	
 3.在需要使用的页面创建控件,并声明遵守协议方法  
-```  
-class _MyHomePageState extends State < MyHomePage > implements InputerProtocol{
+\`\`\`  
+class \_MyHomePageState extends State < MyHomePage > implements InputerProtocol{
 
 	//实现协议方法
 	void didFinishedInputer(WGQVerCodeInputer inputer,BuildContext ctx,String verCode){
 		print("verCode is $verCode");
 	}
-
-
+	
+	
 	
 	@override
 	Widget build(BuildContext context) {
@@ -58,7 +54,9 @@ class _MyHomePageState extends State < MyHomePage > implements InputerProtocol{
 		);
 	}
 } 
-```
+\`\`\\\`
 # Contact me
 - Email:  disburden@gmail.com
 - blog: http://blog.wgq.name
+
+[image-1]:	https://github.com/disburden/vercoder_inputer/blob/master/ScreenShots/verCode.gif?raw=true
