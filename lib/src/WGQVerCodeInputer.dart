@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vercoder_inputer/src/Options.dart';
 
 typedef FinishInput = void Function(WGQVerCodeInputer inputer, String verCoder, BuildContext ctx);
 
@@ -25,15 +26,21 @@ class WGQVerCodeInputer extends StatefulWidget {
         return myState.getVerCode();
     }
 
+    Options options;
 
     WGQVerCodeInputer({
         this.codeLength,
         this.size,
-        // this.finishInput,
-        this.delegate
-    });
-
-
+		this.options,
+        this.delegate,
+    })
+    {
+    	if (options == null){
+    		print('need init options');
+    		options = Options();
+		}
+		this.options = options;
+	}
 
     @override
     _InputerState createState() {
@@ -47,6 +54,8 @@ class _InputerState extends State <WGQVerCodeInputer> {
     List <Widget> tfs;
     List <TextEditingController> tfCtrls;
 
+
+
     @override
     initState() {
         super.initState();
@@ -56,6 +65,8 @@ class _InputerState extends State <WGQVerCodeInputer> {
             return ctrl;
         });
     }
+
+
 
     String getVerCode() {
         if (tfCtrls != null) {
@@ -72,6 +83,7 @@ class _InputerState extends State <WGQVerCodeInputer> {
 
     @override
     Widget build(BuildContext context) {
+		Options opt = widget.options;
         TextField findTextFieldByIndex(int index) {
             Container tfContainer = tfs[index];
             Padding padding = tfContainer.child;
@@ -161,13 +173,13 @@ class _InputerState extends State <WGQVerCodeInputer> {
 
 
             TextEditingController ctrl = tfCtrls[index];
-            Color borderColor = (ctrl.text.isEmpty || ctrl.text == '●') ? Colors.grey : Colors.orange;
-            Color textColor = (ctrl.text.isEmpty || ctrl.text == '●') ? Colors.transparent : Colors.black;
+            Color borderColor = (ctrl.text.isEmpty || ctrl.text == '●') ? opt.emptyUnderLineColor : opt.inputedUnderLineColor;
+            Color textColor = (ctrl.text.isEmpty || ctrl.text == '●') ? Colors.transparent : opt.fontColor;
 
             ThemeData buildDarkTheme() {
                 return base.copyWith(
                     textSelectionColor: Colors.transparent,
-                    textSelectionHandleColor: Colors.green,
+//                    textSelectionHandleColor: Colors.green,
                     secondaryHeaderColor: Colors.transparent,
                     accentColor: Colors.white,
                     inputDecorationTheme: InputDecorationTheme(
@@ -205,8 +217,9 @@ class _InputerState extends State <WGQVerCodeInputer> {
                                     cursorColor: Colors.transparent,
                                     enabled: false,
                                     style: TextStyle(
-                                        fontSize: 16.0,
-                                        color: textColor
+                                        fontSize: opt.fontSize,
+                                        color: textColor,
+										fontWeight: opt.fontWeight,
                                     ),
                                     decoration: InputDecoration(
                                         counterText: "",

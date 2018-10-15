@@ -16,46 +16,54 @@ Enter the verification code received by the phone or other device.
 ## Version
 name|VercodeEditText
 ---|---
-latest|0.5.0
+latest|0.6.0
 
 ## Usage
 1.第一步,在你的pubspec.yml声明
 
 	   dependencies:
-	     vercoder_inputer: ^0.5.0
+	     vercoder_inputer: ^0.6.0
 2.添加引用
 
 	import 'package:vercoder_inputer/vercoder_inputer.dart';
 	...
-	
+ 
 3.在需要使用的页面创建控件,并声明遵守协议方法  
 \`\`\`  
 class \_MyHomePageState extends State < MyHomePage > implements InputerProtocol{
 
 	//实现协议方法
 	void didFinishedInputer(WGQVerCodeInputer inputer,BuildContext ctx,String verCode){
-		print("verCode is $verCode");
+	    print("verCode is $verCode");
 	}
 	
 	
 	
 	@override
 	Widget build(BuildContext context) {
-		//创建控件,并指明代理对象(delegate)
-		WGQVerCodeInputer verCodeInputer = WGQVerCodeInputer(codeLength: 6, size: Size(375.0, 48.0), delegate:this, );
-		return new Scaffold(
-			appBar: new AppBar(
-				title: new Text(widget.title),
-			),
-			body: Padding(
-				padding: EdgeInsets.only(top: 100.0),
-				child: verCodeInputer,
-			)
-		);
+	    //自定义外观样式(可选)
+	   Options opt = Options();
+	   opt.fontSize = 22.0;
+	   opt.fontColor = Colors.indigo;
+	   opt.fontWeight = FontWeight.w700;
+	   opt.emptyUnderLineColor = Colors.green;
+	   opt.inputedUnderLineColor = Colors.pink;
+	
+	    //创建控件,并指明代理对象(delegate)
+	    WGQVerCodeInputer verCodeInputer = WGQVerCodeInputer(codeLength: 6, size: Size(375.0, 48.0), options:opt,delegate:this, );
+	    return new Scaffold(
+	        appBar: new AppBar(
+	            title: new Text(widget.title),
+	        ),
+	        body: Padding(
+	            padding: EdgeInsets.only(top: 100.0),
+	            child: verCodeInputer,
+	        )
+	    );
 	}
-} 
-\`\`\\\`
-# Contact me
+
+```
+`# Contact me
 - Email:  disburden@gmail.com
 - blog: http://blog.wgq.name
 

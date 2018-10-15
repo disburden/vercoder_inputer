@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vercoder_inputer/vercoder_inputer.dart';
 
+
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
@@ -56,7 +57,13 @@ class _MyHomePageState extends State < MyHomePage > implements InputerProtocol{
 
 	@override
 	Widget build(BuildContext context) {
-		WGQVerCodeInputer verCodeInputer = WGQVerCodeInputer(codeLength: 6, size: Size(375.0, 48.0), delegate:this, );
+		Options opt = Options();
+		opt.fontSize = 22.0;
+		opt.fontColor = Colors.indigo;
+		opt.fontWeight = FontWeight.w700;
+		opt.emptyUnderLineColor = Colors.green;
+		opt.inputedUnderLineColor = Colors.pink;
+		WGQVerCodeInputer verCodeInputer = WGQVerCodeInputer(codeLength: 6, size: Size(375.0, 48.0), options:opt,delegate:this, );
 		return new Scaffold(
 			appBar: new AppBar(
 				title: new Text(widget.title),

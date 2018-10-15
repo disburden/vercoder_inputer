@@ -1,3 +1,3 @@
-## [0.0.1] - TODO: Add release date.
+### [0.6.0] 增加自定义样式的功能,通过实例化Options类来实现.
 
-* TODO: Describe initial release.
+### [0.0.1] - TODO: Add release date.
