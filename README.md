@@ -3,8 +3,8 @@ Enter the verification code received by the phone or other device.
 一个基于flutter的验证码输入框控件.
 
 ## Demo  
-控制用户精准输入长度.
-![][image-1]  
+控制用户精准输入长度.   
+![](https://github.com/disburden/vercoder_inputer/blob/555db02e7ebf333cf2dc5562711eec865f184943/ScreenShots/verCode.gif?raw=true) 
 
 ## Features
 - [x] **可以自定义验证码长度**  
@@ -16,7 +16,7 @@ Enter the verification code received by the phone or other device.
 ## Version
 name|VercodeEditText
 ---|---
-latest|0.6.0
+latest|0.6.1
 
 ## Usage
 1.第一步,在你的pubspec.yml声明
@@ -29,7 +29,8 @@ latest|0.6.0
 	...
  
 3.在需要使用的页面创建控件,并声明遵守协议方法  
-\`\`\`  
+ 
+```dart
 class \_MyHomePageState extends State < MyHomePage > implements InputerProtocol{
 
 	//实现协议方法
@@ -61,9 +62,10 @@ class \_MyHomePageState extends State < MyHomePage > implements InputerProtocol{
 	        )
 	    );
 	}
-
 ```
-`# Contact me
+
+
+# Contact me
 - Email:  disburden@gmail.com
 - blog: http://blog.wgq.name
 
