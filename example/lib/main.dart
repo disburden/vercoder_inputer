@@ -53,6 +53,7 @@ class _MyHomePageState extends State < MyHomePage > implements InputerProtocol{
 
 	void didFinishedInputer(WGQVerCodeInputer inputer,BuildContext ctx,String verCode){
 		print("verCode is $verCode");
+//		inputer.reset();
 	}
 
 	@override

@@ -26,6 +26,10 @@ class WGQVerCodeInputer extends StatefulWidget {
 		return myState.getVerCode();
 	}
 
+	void reset(){
+		myState.reset();
+	}
+
 	Options options;
 
 	WGQVerCodeInputer({
@@ -91,6 +95,14 @@ class _InputerState extends State <WGQVerCodeInputer> {
 		return "";
 	}
 
+	void reset(){
+		for (TextEditingController ctrl in tfCtrls) {
+			ctrl.text = "●";
+		}
+		FocusScope.of(context).requestFocus(fns[0]);
+		setState(() {});
+	}
+
 
 	@override
 	Widget build(BuildContext context) {
@@ -141,8 +153,11 @@ class _InputerState extends State <WGQVerCodeInputer> {
 			String oldtxt = backStrs[index];
 			print("str:$text ${text.length} old:$oldtxt");
 			if (text.length == 0) {
+
 				if (index > 0 && oldtxt == "●") {
 					setFocusedTextFiled(index - 1);
+					setTextFieldValue('●', index-1);
+					backStrs[index-1] = '●';
 					setState(() {});
 				} else {
 					setTextFieldValue('●', index);
@@ -153,6 +168,28 @@ class _InputerState extends State <WGQVerCodeInputer> {
 				setFocusedTextFiled(index + 1);
 				backStrs[index] = "";
 			}
+
+
+//			String oldtxt = backStrs[index];
+//			if (text.length == 0) {
+//				// print('$index 文本框值发生改变,变为空');
+//				setTextFieldValue('●', index);
+//				// print('$index 文本框设置为默认值●');
+//
+//				if (index > 0 && index<widget.codeLength-1 && oldtxt == "●") {
+//					// print('${index-1} 设置焦点');
+//					setTextFieldValue('●', index-1);
+//					setFocusedTextFiled(index - 1);
+//				}
+//				return;
+//			} else {
+//				// print('$index 文本框值发送改变,变为$text');
+//				setTextFieldValue(text, index);
+//				// print('${index+1} 设置焦点');
+//				backStrs[index] = text;
+//				setFocusedTextFiled(index + 1);
+//			}
+
 
 			///如果验证码全部输入完,调用回调
 			if (checkCode()) {

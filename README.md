@@ -16,13 +16,13 @@ Enter the verification code received by the phone or other device.
 ## Version
 name|VercodeEditText
 ---|---
-latest|0.7.0
+latest|0.8.0
 
 ## Usage
 1.第一步,在你的pubspec.yml声明
 
 	   dependencies:
-	     vercoder_inputer: ^0.7.0
+	     vercoder_inputer: ^0.8.0
 2.添加引用
 
 	import 'package:vercoder_inputer/vercoder_inputer.dart';
@@ -36,6 +36,12 @@ class _MyHomePageState extends State < MyHomePage > implements InputerProtocol{
     //实现协议方法
     void didFinishedInputer(WGQVerCodeInputer inputer,BuildContext ctx,String verCode){
         print("verCode is $verCode");
+        
+        //判断验证码是否正确
+        bool correct = false;//(此处修改成你自己的判断逻辑)
+        if (!correct) {
+        	inputer.reset();
+        }
     }
  
  
