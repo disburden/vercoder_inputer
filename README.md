@@ -16,7 +16,7 @@ Enter the verification code received by the phone or other device.
 ## Version
 name|VercodeEditText
 ---|---
-latest|0.8.0
+latest|0.8.1
 
 ## Usage
 1.第一步,在你的pubspec.yml声明
@@ -68,6 +68,7 @@ class _MyHomePageState extends State < MyHomePage > implements InputerProtocol{
             )
         );
     }
+}
 ```
 
 

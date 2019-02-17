@@ -190,7 +190,6 @@ class _InputerState extends State <WGQVerCodeInputer> {
 //				setFocusedTextFiled(index + 1);
 //			}
 
-
 			///如果验证码全部输入完,调用回调
 			if (checkCode()) {
 				if (widget.delegate != null) {
@@ -255,7 +254,7 @@ class _InputerState extends State <WGQVerCodeInputer> {
 						data: buildDarkTheme(),
 						child: GestureDetector(
 							onTap: () {
-//								setFocusedTextFiled(index);
+								setFocusedTextFiled(index);
 							},
 							behavior: HitTestBehavior.opaque,
 							child: Container(
